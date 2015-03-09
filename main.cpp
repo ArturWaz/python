@@ -67,13 +67,14 @@ protected:
                     "plt.ion()\n"
                     "line, = plt.plot(x,y)\n"
                     "plt.xlim([min(x),max(x)])\n"
-                    "plt.ylim([min(y)-1,max(y)+1])\n"
+                    "plt.ylim([min(y)-0.01,max(y)+0.01])\n"
 
                     "def addValueToBuffer(i):\n"
                     "\ty.append(i)\n"
                     "\tdel y[0]\n"
 
                     "def refresh():\n"
+                    "\tplt.ylim([min(y)-0.01,max(y)+0.01])\n"
                     "\tline.set_ydata(y)\n"
 
                     "def pause(i):\n"
