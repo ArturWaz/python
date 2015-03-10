@@ -138,18 +138,37 @@ public:
 };
 
 
+void testFunc() {
+
+    string filename_("plot_button2.py");
+    PyObject *obj_ = Py_BuildValue("s", filename_.c_str());
+    FILE *pythonScriptFile_ = _Py_fopen_obj(obj_, "r+");
+    if (pythonScriptFile_ == nullptr || obj_ == nullptr) throw "error";
+
+    Py_Initialize();
+    PyRun_SimpleFile(pythonScriptFile_, filename_.c_str());
+
+
+
+
+    cout << "\n\nPy_Finalize() !!!";
+    Py_Finalize();
+    cout << "\nEnd program !!!\n\n";
+}
 
 
 int main() {
 
-    Plot plot;
+    testFunc();
 
-    plot.show();
-
-    for (int j = 0; j < 300; ++j) {
-        plot.addValue(double(j)/10);
-        Sleep(100);
-    }
+//    Plot plot;
+//
+//    plot.show();
+//
+//    for (int j = 0; j < 300; ++j) {
+//        plot.addValue(double(j)/10);
+//        Sleep(100);
+//    }
 
     return 0;
 }
